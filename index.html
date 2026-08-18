@@ -63,49 +63,12 @@
     .btn-light:hover { background: #f7fbff; }
     .btn-light:focus { outline: 3px solid rgba(26,115,232,0.10); }
 
-    /* Quote dropdown styles */
-    .quote-dropdown {
-      position: relative;
-      display: inline-block;
-      margin-top: 8px;
-    }
-
+    /* Quote button styling */
     .btn-quote {
       background: var(--logo-orange);
-      width: 100%;
     }
     .btn-quote:hover { background: #fb8c00; }
     .btn-quote:focus { outline: 3px solid rgba(255,152,0,0.18); }
-
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: #f9f9f9;
-      min-width: 200px;
-      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-      padding: 12px 16px;
-      z-index: 1;
-      border-radius: 6px;
-      top: 100%;
-      left: 0;
-      margin-top: 8px;
-    }
-
-    .dropdown-content a {
-      color: #333;
-      padding: 12px 0;
-      text-decoration: none;
-      display: block;
-      transition: color 120ms ease;
-    }
-
-    .dropdown-content a:hover {
-      color: var(--logo-orange);
-    }
-
-    .quote-dropdown.active .dropdown-content {
-      display: block;
-    }
   </style>
 </head>
 <body>
@@ -131,26 +94,10 @@
     <div class="links">
       <a class="btn btn-secondary" href="https://www.google.com/maps/search/?api=1&query=Wilson+Street+Titanic+Plaza" target="_blank" rel="noopener">View on Google Maps</a>
       <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&destination=Wilson+Street+Titanic+Plaza" target="_blank" rel="noopener">Get directions</a>
-      <div class="quote-dropdown" id="quoteDropdown">
-        <button class="btn btn-quote" onclick="document.getElementById('quoteDropdown').classList.toggle('active')">Request a quote</button>
-        <div class="dropdown-content">
-          <a href="mailto:techclinicenterprisesltd@gmail.com">📧 Email</a>
-          <a href="https://wa.me/256704517879" target="_blank" rel="noopener">💬 WhatsApp</a>
-        </div>
-      </div>
+      <a class="btn btn-quote" href="mailto:techclinicenterprisesltd@gmail.com">Request a quote</a>
     </div>
 
     <p class="note">If the map does not show correctly in your environment, click "View on Google Maps" to open the location directly on Google Maps.</p>
   </div>
-
-  <script>
-    // Close dropdown when clicking outside
-    document.addEventListener('click', function(event) {
-      var dropdown = document.getElementById('quoteDropdown');
-      if (!dropdown.contains(event.target)) {
-        dropdown.classList.remove('active');
-      }
-    });
-  </script>
 </body>
 </html>
