@@ -5,14 +5,56 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Tech Clinic — Location</title>
   <style>
+    :root { --logo-blue: #1a73e8; --logo-teal: #0f766e; }
     body { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin: 0; padding: 0; }
     .container { max-width: 1000px; margin: 24px auto; padding: 0 16px; }
     h1 { margin: 0 0 12px 0; font-size: 1.5rem; }
     .map-wrap { position: relative; width: 100%; padding-bottom: 56.25%; /* 16:9 */ }
     .map-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
     .links { margin-top: 12px; }
-    .links a { color: #1a73e8; text-decoration: none; margin-right: 12px; }
+    .links a { color: var(--logo-blue); text-decoration: none; margin-right: 12px; }
     .note { margin-top: 8px; color: #555; font-size: 0.9rem; }
+
+    /* Shared button styles using the logo colours */
+    .btn {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 8px 12px;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 700;
+      border: 1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 1px 0 rgba(0,0,0,0.03);
+      transition: transform 120ms ease, box-shadow 120ms ease;
+    }
+    .btn:active { transform: translateY(1px); }
+    .btn:focus { outline-offset: 3px; }
+
+    /* Primary (call / important) uses gradient left-to-right */
+    .btn-primary {
+      background: linear-gradient(90deg, var(--logo-blue) 0%, var(--logo-teal) 100%);
+    }
+    .btn-primary:hover { background: linear-gradient(90deg,#165ecf 0%,#0e665d 100%); }
+    .btn-primary:focus { outline: 3px solid rgba(26,115,232,0.18); }
+
+    /* Secondary (location / alternate) uses reverse gradient for contrast */
+    .btn-secondary {
+      background: linear-gradient(90deg, var(--logo-teal) 0%, var(--logo-blue) 100%);
+    }
+    .btn-secondary:hover { background: linear-gradient(90deg,#0e665d 0%,#165ecf 100%); }
+    .btn-secondary:focus { outline: 3px solid rgba(15,118,110,0.18); }
+
+    /* Light variant for low-emphasis actions */
+    .btn-light {
+      background: #ffffff;
+      color: var(--logo-blue);
+      font-weight: 600;
+      border: 1px solid rgba(26,115,232,0.12);
+      box-shadow: none;
+    }
+    .btn-light:hover { background: #f7fbff; }
+    .btn-light:focus { outline: 3px solid rgba(26,115,232,0.10); }
   </style>
 </head>
 <body>
@@ -31,9 +73,9 @@
     </div>
 
     <div class="links">
-      <a href="https://www.google.com/maps/search/?api=1&query=Wilson+Street+Titanic+Plaza" target="_blank" rel="noopener">View on Google Maps</a>
-      <a href="https://www.google.com/maps/dir/?api=1&destination=Wilson+Street+Titanic+Plaza" target="_blank" rel="noopener">Get directions</a>
-      <a href="https://search.google.com/local/writereview?placeid=" target="_blank" rel="noopener">Write a review on Google</a>
+      <a class="btn btn-secondary" href="https://www.google.com/maps/search/?api=1&query=Wilson+Street+Titanic+Plaza" target="_blank" rel="noopener">View on Google Maps</a>
+      <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&destination=Wilson+Street+Titanic+Plaza" target="_blank" rel="noopener">Get directions</a>
+      <a class="btn btn-light" href="https://search.google.com/local/writereview?placeid=" target="_blank" rel="noopener">Write a review on Google</a>
     </div>
 
     <p class="note">If the map does not show correctly in your environment, click "View on Google Maps" to open the location directly on Google Maps.</p>
