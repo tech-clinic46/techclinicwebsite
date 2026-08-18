@@ -33,6 +33,7 @@
       border: 1px solid rgba(0,0,0,0.06);
       box-shadow: 0 1px 0 rgba(0,0,0,0.03);
       transition: transform 120ms ease, box-shadow 120ms ease;
+      cursor: pointer;
     }
     .btn:active { transform: translateY(1px); }
     .btn:focus { outline-offset: 3px; }
@@ -62,10 +63,15 @@
     .btn-light:hover { background: #f7fbff; }
     .btn-light:focus { outline: 3px solid rgba(26,115,232,0.10); }
 
+    /* Quote button wrapper */
+    .quote-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
     /* Quote button styling */
     .btn-quote {
       background: var(--logo-orange);
-      position: relative;
     }
     .btn-quote:hover { background: #fb8c00; }
     .btn-quote:focus { outline: 3px solid rgba(255,152,0,0.18); }
@@ -81,8 +87,11 @@
       border-radius: 6px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.15);
       z-index: 10;
-      min-width: 160px;
+      min-width: 180px;
       margin-top: 8px;
+    }
+    .quote-menu.show {
+      display: block;
     }
     .quote-menu a {
       display: block;
@@ -101,9 +110,6 @@
     .quote-menu a:hover {
       background: #f5f5f5;
       color: var(--logo-orange);
-    }
-    .btn-quote.active ~ .quote-menu {
-      display: block;
     }
   </style>
 </head>
@@ -130,10 +136,12 @@
     <div class="links">
       <a class="btn btn-secondary" href="https://www.google.com/maps/search/?api=1&query=Wilson+Street+Titanic+Plaza" target="_blank" rel="noopener">View on Google Maps</a>
       <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&destination=Wilson+Street+Titanic+Plaza" target="_blank" rel="noopener">Get directions</a>
-      <button class="btn btn-quote" id="quoteBtn" onclick="toggleQuoteMenu()">Request a quote</button>
-      <div class="quote-menu" id="quoteMenu">
-        <a href="mailto:techclinicenterprisesltd@gmail.com">📧 Email</a>
-        <a href="https://wa.me/256704517879" target="_blank" rel="noopener">💬 WhatsApp</a>
+      <div class="quote-wrapper">
+        <button class="btn btn-quote" id="quoteBtn" onclick="toggleQuoteMenu(event)">Request a quote</button>
+        <div class="quote-menu" id="quoteMenu">
+          <a href="mailto:techclinicenterprisesltd@gmail.com">📧 Email</a>
+          <a href="https://wa.me/256704517879" target="_blank" rel="noopener">💬 WhatsApp</a>
+        </div>
       </div>
     </div>
 
@@ -141,17 +149,18 @@
   </div>
 
   <script>
-    function toggleQuoteMenu() {
-      const btn = document.getElementById('quoteBtn');
-      btn.classList.toggle('active');
+    function toggleQuoteMenu(event) {
+      event.stopPropagation();
+      const menu = document.getElementById('quoteMenu');
+      menu.classList.toggle('show');
     }
     
     // Close menu when clicking outside
     document.addEventListener('click', function(event) {
-      const btn = document.getElementById('quoteBtn');
       const menu = document.getElementById('quoteMenu');
-      if (!event.target.closest('.btn-quote') && !event.target.closest('.quote-menu')) {
-        btn.classList.remove('active');
+      const wrapper = document.querySelector('.quote-wrapper');
+      if (!wrapper.contains(event.target)) {
+        menu.classList.remove('show');
       }
     });
   </script>
