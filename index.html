@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Tech Clinic — Location</title>
   <style>
-    :root { --logo-blue: #1a73e8; --logo-teal: #0f766e; }
+    :root { --logo-blue: #1a73e8; --logo-teal: #0f766e; --logo-orange: #ff9800; }
     body { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin: 0; padding: 0; }
     .container { max-width: 1000px; margin: 24px auto; padding: 0 16px; }
     h1 { margin: 0 0 12px 0; font-size: 1.5rem; }
@@ -61,6 +61,50 @@
     }
     .btn-light:hover { background: #f7fbff; }
     .btn-light:focus { outline: 3px solid rgba(26,115,232,0.10); }
+
+    /* Quote button styling */
+    .btn-quote {
+      background: var(--logo-orange);
+      position: relative;
+    }
+    .btn-quote:hover { background: #fb8c00; }
+    .btn-quote:focus { outline: 3px solid rgba(255,152,0,0.18); }
+
+    /* Quote dropdown menu */
+    .quote-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #ffffff;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      z-index: 10;
+      min-width: 160px;
+      margin-top: 8px;
+    }
+    .quote-menu a {
+      display: block;
+      padding: 12px 16px;
+      color: #333;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 120ms ease;
+    }
+    .quote-menu a:first-child {
+      border-radius: 6px 6px 0 0;
+    }
+    .quote-menu a:last-child {
+      border-radius: 0 0 6px 6px;
+    }
+    .quote-menu a:hover {
+      background: #f5f5f5;
+      color: var(--logo-orange);
+    }
+    .btn-quote.active ~ .quote-menu {
+      display: block;
+    }
   </style>
 </head>
 <body>
@@ -86,10 +130,30 @@
     <div class="links">
       <a class="btn btn-secondary" href="https://www.google.com/maps/search/?api=1&query=Wilson+Street+Titanic+Plaza" target="_blank" rel="noopener">View on Google Maps</a>
       <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&destination=Wilson+Street+Titanic+Plaza" target="_blank" rel="noopener">Get directions</a>
-      <a class="btn btn-light" href="https://search.google.com/local/writereview?placeid=" target="_blank" rel="noopener">Write a review on Google</a>
+      <button class="btn btn-quote" id="quoteBtn" onclick="toggleQuoteMenu()">Request a quote</button>
+      <div class="quote-menu" id="quoteMenu">
+        <a href="mailto:techclinicenterprisesltd@gmail.com">📧 Email</a>
+        <a href="https://wa.me/256704517879" target="_blank" rel="noopener">💬 WhatsApp</a>
+      </div>
     </div>
 
     <p class="note">If the map does not show correctly in your environment, click "View on Google Maps" to open the location directly on Google Maps.</p>
   </div>
+
+  <script>
+    function toggleQuoteMenu() {
+      const btn = document.getElementById('quoteBtn');
+      btn.classList.toggle('active');
+    }
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+      const btn = document.getElementById('quoteBtn');
+      const menu = document.getElementById('quoteMenu');
+      if (!event.target.closest('.btn-quote') && !event.target.closest('.quote-menu')) {
+        btn.classList.remove('active');
+      }
+    });
+  </script>
 </body>
 </html>
