@@ -24,24 +24,49 @@
     .btn-location:hover { background: #0e665d; }
     .btn-location:focus { outline: 3px solid rgba(15,118,110,0.18); outline-offset: 2px; }
 
-    /* Increase header logo size for better visibility */
+    /* Brand / header styles: logo + company name */
+    .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-wrap {
+      background: linear-gradient(135deg, #1a73e8 0%, #0f766e 100%);
+      padding: 6px;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 6px rgba(10,20,40,0.08);
+    }
     .brand img {
-      height: 48px;
+      height: 40px;
       width: auto;
       display: block;
+      border-radius: 6px;
     }
+    .brand-text {
+      font-weight: 700;
+      color: #07223a; /* dark blue for text */
+      font-size: 1rem;
+      line-height: 1;
+      display: inline-block;
+    }
+    .brand-text .brand-name { color: #1a73e8; } /* accent color */
+    .brand-text .brand-sub { color: #0f766e; font-weight:600; font-size:0.9rem; display:block; }
+
     @media (min-width: 768px) {
-      .brand img {
-        height: 64px;
-      }
+      .brand img { height: 56px; }
+      .brand-text { font-size: 1.125rem; }
     }
+
+    /* Keep previous logo sizing fallback removed to avoid duplicates */
   </style>
 </head>
 <body>
   <header class="site-header">
     <div class="container nav-wrap">
       <a class="brand" href="#home" aria-label="Tech-clinic Enterprises Ltd home">
-        <img src="assets/logo.jpg" alt="Tech-clinic Enterprises Ltd logo">
+        <span class="logo-wrap" aria-hidden="true">
+          <img src="assets/logo.jpg" alt="Tech-clinic Enterprises Ltd logo">
+        </span>
+        <span class="brand-text"><span class="brand-name">Tech-clinic</span><span class="brand-sub">Enterprises Ltd</span></span>
       </a>
       <button class="menu-btn" aria-label="Open menu" aria-expanded="false">☰</button>
       <nav class="nav" aria-label="Main navigation">
