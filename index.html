@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Tech Clinic — Location</title>
   <style>
-    :root { --logo-blue: #1a73e8; --logo-teal: #0f766e; }
+    :root { --logo-blue: #1a73e8; --logo-grey: #808080; }
     body { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin: 0; padding: 0; }
     .container { max-width: 1000px; margin: 24px auto; padding: 0 16px; }
     h1 { margin: 0 0 12px 0; font-size: 1.5rem; }
@@ -31,19 +31,19 @@
     .btn:active { transform: translateY(1px); }
     .btn:focus { outline-offset: 3px; }
 
-    /* Primary (call / important) uses gradient left-to-right */
+    /* Primary (call / important) uses grey */
     .btn-primary {
-      background: linear-gradient(90deg, var(--logo-blue) 0%, var(--logo-teal) 100%);
+      background: var(--logo-grey);
     }
-    .btn-primary:hover { background: linear-gradient(90deg,#165ecf 0%,#0e665d 100%); }
-    .btn-primary:focus { outline: 3px solid rgba(26,115,232,0.18); }
+    .btn-primary:hover { background: #666666; }
+    .btn-primary:focus { outline: 3px solid rgba(128,128,128,0.18); }
 
-    /* Secondary (location / alternate) uses reverse gradient for contrast */
+    /* Secondary (location / alternate) uses blue */
     .btn-secondary {
-      background: linear-gradient(90deg, var(--logo-teal) 0%, var(--logo-blue) 100%);
+      background: var(--logo-blue);
     }
-    .btn-secondary:hover { background: linear-gradient(90deg,#0e665d 0%,#165ecf 100%); }
-    .btn-secondary:focus { outline: 3px solid rgba(15,118,110,0.18); }
+    .btn-secondary:hover { background: #165ecf; }
+    .btn-secondary:focus { outline: 3px solid rgba(26,115,232,0.18); }
 
     /* Light variant for low-emphasis actions */
     .btn-light {
