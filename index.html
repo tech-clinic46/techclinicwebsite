@@ -63,53 +63,48 @@
     .btn-light:hover { background: #f7fbff; }
     .btn-light:focus { outline: 3px solid rgba(26,115,232,0.10); }
 
-    /* Quote button wrapper */
-    .quote-wrapper {
+    /* Quote dropdown styles */
+    .quote-dropdown {
       position: relative;
       display: inline-block;
+      margin-top: 8px;
     }
 
-    /* Quote button styling */
     .btn-quote {
       background: var(--logo-orange);
+      width: 100%;
     }
     .btn-quote:hover { background: #fb8c00; }
     .btn-quote:focus { outline: 3px solid rgba(255,152,0,0.18); }
 
-    /* Quote dropdown menu */
-    .quote-menu {
+    .dropdown-content {
       display: none;
       position: absolute;
+      background-color: #f9f9f9;
+      min-width: 200px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      padding: 12px 16px;
+      z-index: 1;
+      border-radius: 6px;
       top: 100%;
       left: 0;
-      background: #ffffff;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-      z-index: 10;
-      min-width: 180px;
       margin-top: 8px;
     }
-    .quote-menu.show {
-      display: block;
-    }
-    .quote-menu a {
-      display: block;
-      padding: 12px 16px;
+
+    .dropdown-content a {
       color: #333;
+      padding: 12px 0;
       text-decoration: none;
-      font-weight: 500;
-      transition: background 120ms ease;
+      display: block;
+      transition: color 120ms ease;
     }
-    .quote-menu a:first-child {
-      border-radius: 6px 6px 0 0;
-    }
-    .quote-menu a:last-child {
-      border-radius: 0 0 6px 6px;
-    }
-    .quote-menu a:hover {
-      background: #f5f5f5;
+
+    .dropdown-content a:hover {
       color: var(--logo-orange);
+    }
+
+    .quote-dropdown.active .dropdown-content {
+      display: block;
     }
   </style>
 </head>
@@ -136,9 +131,9 @@
     <div class="links">
       <a class="btn btn-secondary" href="https://www.google.com/maps/search/?api=1&query=Wilson+Street+Titanic+Plaza" target="_blank" rel="noopener">View on Google Maps</a>
       <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&destination=Wilson+Street+Titanic+Plaza" target="_blank" rel="noopener">Get directions</a>
-      <div class="quote-wrapper">
-        <button class="btn btn-quote" id="quoteBtn" onclick="toggleQuoteMenu(event)">Request a quote</button>
-        <div class="quote-menu" id="quoteMenu">
+      <div class="quote-dropdown" id="quoteDropdown">
+        <button class="btn btn-quote" onclick="document.getElementById('quoteDropdown').classList.toggle('active')">Request a quote</button>
+        <div class="dropdown-content">
           <a href="mailto:techclinicenterprisesltd@gmail.com">📧 Email</a>
           <a href="https://wa.me/256704517879" target="_blank" rel="noopener">💬 WhatsApp</a>
         </div>
@@ -149,18 +144,11 @@
   </div>
 
   <script>
-    function toggleQuoteMenu(event) {
-      event.stopPropagation();
-      const menu = document.getElementById('quoteMenu');
-      menu.classList.toggle('show');
-    }
-    
-    // Close menu when clicking outside
+    // Close dropdown when clicking outside
     document.addEventListener('click', function(event) {
-      const menu = document.getElementById('quoteMenu');
-      const wrapper = document.querySelector('.quote-wrapper');
-      if (!wrapper.contains(event.target)) {
-        menu.classList.remove('show');
+      var dropdown = document.getElementById('quoteDropdown');
+      if (!dropdown.contains(event.target)) {
+        dropdown.classList.remove('active');
       }
     });
   </script>
