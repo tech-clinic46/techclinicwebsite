@@ -90,6 +90,8 @@ a{text-decoration:none;color:inherit}
 .contact-card>div{padding:18px 0;border-bottom:1px solid var(--line)}
 .contact-card>div:last-child{border-bottom:0}
 .contact-card span{display:block;color:var(--muted);font-size:.72rem;font-weight:800;letter-spacing:.12em;margin-bottom:6px}
+.phone-actions{display:flex;align-items:center}
+.phone-actions .btn-call{margin-top:2px}
 .contact-card a{color:var(--blue);font-weight:800}
 .footer{background:#041329;color:#aebdd3;padding:28px 0}
 .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px}
