@@ -69,6 +69,84 @@
     }
     .btn-quote:hover { background: #fb8c00; }
     .btn-quote:focus { outline: 3px solid rgba(255,152,0,0.18); }
+
+    /* Quote menu */
+    .quote-menu {
+      position: relative;
+      display: inline-block;
+      margin-top: 8px;
+    }
+    .quote-menu > summary {
+      list-style: none;
+    }
+    .quote-menu > summary::-webkit-details-marker {
+      display: none;
+    }
+    .quote-menu-panel {
+      position: absolute;
+      z-index: 2;
+      top: calc(100% + 8px);
+      left: 0;
+      min-width: 220px;
+      padding: 8px;
+      background: #ffffff;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 12px;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.14);
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .quote-menu[open] .quote-menu-panel {
+      display: flex;
+    }
+    .quote-option {
+      display: block;
+      padding: 10px 12px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      color: #16304f;
+      background: #f7fafc;
+      border: 1px solid rgba(26, 115, 232, 0.10);
+      transition: background 120ms ease, transform 120ms ease;
+    }
+    .quote-option:hover {
+      background: #eef5ff;
+      transform: translateY(-1px);
+    }
+    .quote-option-call {
+      color: #0f766e;
+    }
+    .quote-option-email {
+      color: #1a73e8;
+    }
+    .quote-option-whatsapp {
+      color: #1b7e3a;
+    }
+
+    .catalog-section {
+      margin-top: 20px;
+      padding: 16px;
+      background: #ffffff;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 12px;
+      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.06);
+    }
+    .catalog-title {
+      margin: 0 0 10px 0;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #16304f;
+    }
+    .catalog-list {
+      margin: 0;
+      padding-left: 18px;
+      color: #334155;
+    }
+    .catalog-list li + li {
+      margin-top: 6px;
+    }
   </style>
 </head>
 <body>
@@ -88,14 +166,31 @@
 
     <div class="phone-section">
       <div class="phone-label">PHONE</div>
-      <div class="phone-button"></div>
+      <a class="btn btn-primary" href="tel:+256704517879">Call +256 704 517 879</a>
     </div>
 
     <div class="links">
       <a class="btn btn-secondary" href="https://www.google.com/maps/search/?api=1&query=Wilson+Street+Titanic+Plaza" target="_blank" rel="noopener">View on Google Maps</a>
       <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&destination=Wilson+Street+Titanic+Plaza" target="_blank" rel="noopener">Get directions</a>
-      <a class="btn btn-quote" href="mailto:techclinicenterprisesltd@gmail.com">Request a quote</a>
+      <details class="quote-menu">
+        <summary class="btn btn-quote">Request a quote</summary>
+        <div class="quote-menu-panel" role="menu" aria-label="Quote options">
+          <a class="quote-option quote-option-call" href="tel:+256704517879">Phone call</a>
+          <a class="quote-option quote-option-email" href="mailto:techclinicenterprisesltd@gmail.com">Email</a>
+          <a class="quote-option quote-option-whatsapp" href="https://wa.me/256704517879" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </details>
     </div>
+
+    <section class="catalog-section" aria-labelledby="catalog-title">
+      <h2 class="catalog-title" id="catalog-title">What we offer</h2>
+      <ul class="catalog-list">
+        <li>ICT</li>
+        <li>Electronics</li>
+        <li>Sales</li>
+        <li>Cameras and Accessories</li>
+      </ul>
+    </section>
 
     <p class="note">If the map does not show correctly in your environment, click "View on Google Maps" to open the location directly on Google Maps.</p>
   </div>
