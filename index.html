@@ -10,10 +10,12 @@
   <style>
     /* Small addition for the Location button to ensure visible styling if styles.css is missing */
     .btn-location {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       margin-top: 8px;
       padding: 8px 12px;
-      background: #0f766e; /* muted teal for better contrast */
+      background: #c62828;
       color: #ffffff; /* white text for readability */
       text-decoration: none;
       border-radius: 6px;
@@ -21,15 +23,16 @@
       border: 1px solid rgba(0,0,0,0.08);
       box-shadow: 0 1px 0 rgba(0,0,0,0.04);
     }
-    .btn-location:hover { background: #0e665d; }
-    .btn-location:focus { outline: 3px solid rgba(15,118,110,0.18); outline-offset: 2px; }
+    .btn-location:hover { background: #ad2323; }
+    .btn-location:focus { outline: 3px solid rgba(198,40,40,0.18); outline-offset: 2px; }
 
     /* Call button styling */
     .btn-call {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
       margin-top: 8px;
       padding: 8px 12px;
-      background: #137f48; /* dark green */
+      background: #f28c28;
       color: #ffffff;
       text-decoration: none;
       border-radius: 6px;
@@ -37,8 +40,14 @@
       border: 1px solid rgba(0,0,0,0.06);
       box-shadow: 0 1px 0 rgba(0,0,0,0.03);
     }
-    .btn-call:hover { background: #0f6a3d; }
-    .btn-call:focus { outline: 3px solid rgba(19,127,72,0.18); outline-offset: 2px; }
+    .btn-call:hover { background: #dd7d1f; }
+    .btn-call:focus { outline: 3px solid rgba(242,140,40,0.22); outline-offset: 2px; }
+    .btn-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+    }
 
     /* Brand / header styles: logo + company name */
     .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
@@ -351,7 +360,7 @@
           <div>
             <span>LOCATION</span>
             <p>Titanic Plaza, Wilson Street<br>Shop TD 49, Uganda</p>
-            <a class="btn-location" href="https://www.google.com/maps/dir/?api=1&destination=Wilson+Street+Titanic+Plaza" target="_blank" rel="noopener">Open location on Google Maps</a>
+            <a class="btn-location" href="https://www.google.com/maps/dir/?api=1&destination=Wilson+Street+Titanic+Plaza" target="_blank" rel="noopener"><span class="btn-icon" aria-hidden="true">📍</span>Open location on Google Maps</a>
           </div>
           <div>
             <span>WHATSAPP</span>
