@@ -125,6 +125,27 @@
       background: #eef5ff;
     }
 
+    @media (max-width: 850px) {
+      .card-actions {
+        flex-wrap: wrap;
+        align-items: flex-start;
+      }
+      .quote-menu {
+        display: block;
+        width: 100%;
+      }
+      .quote-menu > summary {
+        width: 100%;
+      }
+      .quote-menu-panel {
+        position: static;
+        margin-top: 8px;
+        min-width: 0;
+        width: 100%;
+        box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
+      }
+    }
+
     /* Keep previous logo sizing fallback removed to avoid duplicates */
   </style>
 </head>
