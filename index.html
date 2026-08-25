@@ -72,6 +72,50 @@
       .brand-text { font-size: 1.125rem; }
     }
 
+    /* Reusable quote menu for service and CTA buttons */
+    .quote-menu {
+      position: relative;
+      display: inline-block;
+    }
+    .quote-menu > summary {
+      list-style: none;
+      cursor: pointer;
+    }
+    .quote-menu > summary::-webkit-details-marker {
+      display: none;
+    }
+    .quote-menu-panel {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      min-width: 220px;
+      padding: 8px;
+      border-radius: 12px;
+      background: #ffffff;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.15);
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+      z-index: 20;
+    }
+    .quote-menu[open] .quote-menu-panel {
+      display: flex;
+    }
+    .quote-option {
+      display: block;
+      text-decoration: none;
+      font-weight: 700;
+      border-radius: 9px;
+      padding: 9px 11px;
+      background: #f8fafc;
+      color: #16304f;
+      border: 1px solid rgba(26, 115, 232, 0.10);
+    }
+    .quote-option:hover {
+      background: #eef5ff;
+    }
+
     /* Keep previous logo sizing fallback removed to avoid duplicates */
   </style>
 </head>
@@ -169,7 +213,14 @@
               </ul>
             </div>
             <div class="card-actions">
-              <a class="btn btn-primary" href="#contact">Get a Quote</a>
+              <details class="quote-menu">
+                <summary class="btn btn-primary">Get a Quote</summary>
+                <div class="quote-menu-panel" role="menu" aria-label="Quote options">
+                  <a class="quote-option" href="tel:+256704517879">Phone call</a>
+                  <a class="quote-option" href="mailto:techclinicenterprisesltd@gmail.com">Email</a>
+                  <a class="quote-option" href="https://wa.me/256704517879?text=Hello%20Tech-clinic%20Enterprises%20Ltd%2C%20I%27d%20like%20to%20request%20a%20quote." target="_blank" rel="noopener">WhatsApp</a>
+                </div>
+              </details>
               <a class="text-link" href="#services">Learn more →</a>
             </div>
           </article>
@@ -258,7 +309,14 @@
           <p class="eyebrow">NEED A QUOTE?</p>
           <h2>Tell us what you need. We'll help you find the right solution.</h2>
         </div>
-        <a class="btn btn-light" href="https://wa.me/256704517879?text=Hello%20Tech-clinic%20Enterprises%20Ltd%2C%20I%27d%20like%20to%20request%20a%20quote." target="_blank" rel="noopener">Request a quote</a>
+        <details class="quote-menu">
+          <summary class="btn btn-light">Request a quote</summary>
+          <div class="quote-menu-panel" role="menu" aria-label="Quote options">
+            <a class="quote-option" href="tel:+256704517879">Phone call</a>
+            <a class="quote-option" href="mailto:techclinicenterprisesltd@gmail.com">Email</a>
+            <a class="quote-option" href="https://wa.me/256704517879?text=Hello%20Tech-clinic%20Enterprises%20Ltd%2C%20I%27d%20like%20to%20request%20a%20quote." target="_blank" rel="noopener">WhatsApp</a>
+          </div>
+        </details>
       </div>
     </section>
 
